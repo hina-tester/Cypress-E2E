@@ -4,6 +4,7 @@
   "description": "Automation Testing",
   "main": "index.js",
   "scripts": {
+   "test:addToCart": "npx cypress run --e2e --spec \"cypress/e2e/Tests/addToCartTest.cy.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/hina-tester/Cypress-E2E#readme",
   "devDependencies": {
-    "cypress": "^14.0.1"
+    "cypress": "^14.0.1",
+    "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
