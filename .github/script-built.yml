@@ -1,14 +1,19 @@
-name: scritp End-to-end tests
-on: push
+name: Cypress End-to-End Tests
+
+on: push  # Run on every push
+
 jobs:
   cypress-run:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
           command: npm run test:addToCart
