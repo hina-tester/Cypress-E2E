@@ -1,31 +1,27 @@
-name: Parallel  Test Build
-on: push
+name: Parallal fina run
+
+on: push  # Run on every push
+
 jobs:
   Add-To-Cart-run:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v6
         with:
-         command: npm run test:addToCart
+          command: npm run test:addToCart
 
-
-      - name: Cypress Test Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: Mochawesome HTML Report - Add To Cart
-          path: cypress/reports/html   
-   
 
   Reg-Flow-run:
-    runs-on: ubuntu-22.04
-    steps:
+     runs-on: ubuntu-22.04
+     steps:
       - name: Checkout
         uses: actions/checkout@v3
         
@@ -37,10 +33,3 @@ jobs:
         with:
          command: npm run test:registerFlow
 
-
-      - name: Cypress Test Report
-        uses: actions/upload-artifact@v3
-        with:
-          name: Mochawesome HTML Report - Reg Flow
-          path: cypress/reports/html   
-  
