@@ -12,6 +12,7 @@ jobs:
         uses: cypress-io/github-action@v6
       
       - name: Cypress Test Report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
            name: Mochaosom HTML Report
@@ -19,6 +20,7 @@ jobs:
 
      
       - name: Slack Notification
+        if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
             SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
